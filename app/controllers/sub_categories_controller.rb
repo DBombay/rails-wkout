@@ -1,5 +1,9 @@
-class SubCategoryController < ApplicationController
+class SubCategoriesController < ApplicationController
   before_action :set_sub_category, only: [:update, :show, :destroy]
+  def index
+    json_response(SubCategory.all)
+  end
+
   def create
     @sub_category = SubCategory.create!(sub_category_params)
     json_response(@sub_category)

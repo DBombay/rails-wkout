@@ -1,9 +1,9 @@
-class CategoryController < ApplicationController
-  before_action :set_sub_category, only: [:update, :show, :destroy]
+class CategoriesController < ApplicationController
+  before_action :set_category, only: [:update, :show, :destroy]
 
   def index
-    @sub_categories = Category.all
-    json_response(@sub_categories)
+    @categories = Category.all
+    json_response(@categories)
   end
 
   def create
