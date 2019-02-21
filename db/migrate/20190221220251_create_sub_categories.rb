@@ -1,4 +1,4 @@
-class CreateSubCategory < ActiveRecord::Migration[5.2]
+class CreateSubCategories < ActiveRecord::Migration[5.2]
   def change
     create_table :sub_categories do |t|
       t.string :name
