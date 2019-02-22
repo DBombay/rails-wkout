@@ -1,4 +1,5 @@
 class SubCategoriesController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_sub_category, only: [:update, :show, :destroy]
   def index
     json_response(SubCategory.all)

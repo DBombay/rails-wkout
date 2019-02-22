@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_category, only: [:update, :show, :destroy]
 
   def index
