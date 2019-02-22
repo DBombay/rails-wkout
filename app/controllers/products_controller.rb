@@ -8,7 +8,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create!(product_params)
+    @product = Product.new(product_params)
+    @product.category = Category.find(product_params[:category_id])
+    @product.sub_category = SubCategory.find(product_params[:sub_category_id])
+    @product.save
     json_response(@product)
   end
 
@@ -18,7 +21,7 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    head :no_content
+    json_response(@product)
   end
 
   def destroy

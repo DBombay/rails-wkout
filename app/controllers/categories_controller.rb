@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 
   def update
     @category.update(category_params)
-    head :no_content
+    json_response(@category)
   end
 
   def destroy

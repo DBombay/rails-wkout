@@ -6,7 +6,9 @@ class SubCategoriesController < ApplicationController
   end
 
   def create
-    @sub_category = SubCategory.create!(sub_category_params)
+    @sub_category = SubCategory.new(sub_category_params)
+    @sub_category.category = Category.find(sub_category_params[:category_id])
+    @sub_category.save
     json_response(@sub_category)
   end
 
@@ -16,7 +18,7 @@ class SubCategoriesController < ApplicationController
 
   def update
     @sub_category.update(sub_category_params)
-    head :no_content
+    json_response(@sub_category)
   end
 
   def destroy
