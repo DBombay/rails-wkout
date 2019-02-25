@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:update, :show, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.where(sub_category_id: product_params[:sub_category_id])
     json_response(@products)
   end
 
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(
+    params.permit(
         :name,
         :description,
         :price,
