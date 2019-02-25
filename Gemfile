@@ -10,6 +10,7 @@ gem 'puma', '~> 3.11'
 
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'rack-cors', require: 'rack/cors'
 gem 'react-rails'
 gem 'sassc'
 gem 'simple_form'

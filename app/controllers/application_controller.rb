@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  after_action :cors_set_access_control_headers
-
   include Response
   include ExceptionHandler
+  protect_from_forgery with: :exception
+  before_action :set_cors_headers
 
-  def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-    headers['Access-Control-Request-Method'] = '*'
-    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  private
+  def set_cors_headers
+    response.set_header "Access-Control-Allow-Origin", origin
+  end
+
+  def origin
+    request.headers["Origin"] || "*"
   end
 end
